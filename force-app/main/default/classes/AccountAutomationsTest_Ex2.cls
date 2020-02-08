@@ -1,8 +1,9 @@
 /*
-THE ISOLATED TEST
+TEST SETUP CENTRALIZATION
 
 Below is an example of an approach to Unit Testing in Salesforce by isolating
-all of your test data generation within the test itself.
+generated test data within a test setup method. Keep in mind in this pattern that
+each test method reuses the same setup test data with its original state.
 
 Advantages:
 - Everything is self contained
@@ -16,11 +17,10 @@ Disadvantages:
 */
 
 @IsTest
-public class AccountAutomationsTest_Ex1 {
-    
-    @IsTest static void syncRelationsLastAccessed_AllObjectsSynced() {
-    
-        // ARRANGE
+public class AccountAutomationsTest_Ex2 {
+
+    @testSetup static void setup() {
+
         Account account = new Account();
         account.Name = 'Test Account';
         account.Description = 'A test account for demonstration';
@@ -69,16 +69,22 @@ public class AccountAutomationsTest_Ex1 {
         asset.Quantity = 2;
         asset.Status = 'Purchased';
         insert asset;
+    }
+    
+    @IsTest static void syncRelationsLastAccessed_AllObjectsSynced() {
+    
+        // ARRANGE
+        Account testAccount = [ SELECT Id FROM Account LIMIT 1];
     
         // ACT
         test.startTest();
-        AccountAutomations.syncRelationsLastAccessed(account.Id);
+        AccountAutomations.syncRelationsLastAccessed(testAccount.Id);
         test.stopTest();
 
-        Account updatedAccount = [ SELECT Id, Relations_Last_Accessed__c FROM Account WHERE Id = :account.Id ];
-        List<Contact> updatedContacts = [ SELECT Id, Relations_Last_Accessed__c FROM Contact WHERE AccountId = :account.Id ];
-        List<Opportunity> updatedOpps = [ SELECT Id, Relations_Last_Accessed__c FROM Opportunity WHERE AccountId = :account.Id ];
-        List<Asset> updatedAssets = [ SELECT Id, Relations_Last_Accessed__c FROM Asset WHERE AccountId = :account.Id ];
+        Account updatedAccount = [ SELECT Id, Relations_Last_Accessed__c FROM Account WHERE Id = :testAccount.Id ];
+        List<Contact> updatedContacts = [ SELECT Id, Relations_Last_Accessed__c FROM Contact WHERE AccountId = :testAccount.Id ];
+        List<Opportunity> updatedOpps = [ SELECT Id, Relations_Last_Accessed__c FROM Opportunity WHERE AccountId = :testAccount.Id ];
+        List<Asset> updatedAssets = [ SELECT Id, Relations_Last_Accessed__c FROM Asset WHERE AccountId = :testAccount.Id ];
     
         // ASSERT
         System.assertEquals(Date.today(), updatedAccount.Relations_Last_Accessed__c);
