@@ -1,5 +1,9 @@
 public class AccountAutomations {
     
+    // ** An example feature used to simulate different types of Unit Tests **
+    //
+    // This function takes an Account Id and sets a custom Date field to Today's date
+    // for the Account and all the related Contacts, Opportunities, and Assets
     public static void syncRelationsLastAccessed(String accountId) {
 
         // Get data to update
