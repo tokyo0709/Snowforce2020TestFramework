@@ -8,22 +8,22 @@ public class AccountAutomations {
         List<Opportunity> oppsToUpdate = [ SELECT Id, Name FROM Opportunity WHERE AccountId = :accountId ];
         List<Asset> assetsToUpdate = [ SELECT Id, Name FROM Asset WHERE AccountId = :accountId ];
 
-        // Set current date time
-        DateTime now = Datetime.now();
+        // Set current date
+        Date today = Date.today();
 
         // Update objects
-        accountToUpdate.Relations_Last_Accessed__c = now;
+        accountToUpdate.Relations_Last_Accessed__c = today;
         
         for (Contact contact : contactsToUpdate) {
-            contact.Relations_Last_Accessed__c = now;
+            contact.Relations_Last_Accessed__c = today;
         }
 
         for (Opportunity opp : oppsToUpdate) {
-            opp.Relations_Last_Accessed__c = now;
+            opp.Relations_Last_Accessed__c = today;
         }
 
         for (Asset asset : assetsToUpdate) {
-            asset.Relations_Last_Accessed__c = now;
+            asset.Relations_Last_Accessed__c = today;
         }
 
         update accountToUpdate;
