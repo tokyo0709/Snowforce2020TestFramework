@@ -14,6 +14,12 @@ public class MDF_ContactFactory {
     }
 
     // Composable Functions
+    public MDF_ContactFactory overrideName(String first, String last) {
+        current.FirstName = first;
+        current.LastName = last;
+        return this;
+    }
+
     public MDF_ContactFactory withAccount(Account account) {
         current.AccountId = account.Id;
         return this;

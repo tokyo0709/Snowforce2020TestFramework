@@ -32,6 +32,7 @@ public class AccountAutomationsTest_Ex5 {
             .create();
 
         Contact testContact = MDF_ContactFactory.start()
+            .overrideName('Jane', 'Smith')
             .withAccount(testAccount)
             .withContactDetails()
             .withMailingAddress()
