@@ -4,7 +4,7 @@ COMPOSABLE DATA FACTORIES
 Below is an example of an approach to Unit Testing in Salesforce by isolating
 generated test data within individual data factories per SObject. These Factories
 are made up of several composable functions that allow you to quickly build out
-test data and clearly read it upon later maintanence 
+test data and clearly read it upon later maintanence.
 
 Advantages:
 - Factories can be created as needed
