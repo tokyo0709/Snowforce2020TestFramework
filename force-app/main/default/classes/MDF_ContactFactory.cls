@@ -20,7 +20,7 @@ public class MDF_ContactFactory {
         return this;
     }
 
-    public MDF_ContactFactory withAccount(Account account) {
+    public MDF_ContactFactory relatedAccount(Account account) {
         current.AccountId = account.Id;
         return this;
     }

@@ -14,7 +14,7 @@ public class MDF_OpportunityFactory {
     }
 
     // Composable Functions
-    public MDF_OpportunityFactory withAccount(Account account) {
+    public MDF_OpportunityFactory relatedAccount(Account account) {
         current.AccountId = account.Id;
         return this;
     }

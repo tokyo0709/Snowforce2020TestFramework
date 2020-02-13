@@ -33,13 +33,13 @@ public class AccountAutomationsTest_Ex5 {
 
         Contact testContact = MDF_ContactFactory.start()
             .overrideName('Jane', 'Smith')
-            .withAccount(testAccount)
+            .relatedAccount(testAccount)
             .withContactDetails()
             .withMailingAddress()
             .create();
 
         Opportunity testOpportunity = MDF_OpportunityFactory.start()
-            .withAccount(testAccount)
+            .relatedAccount(testAccount)
             .asNewCustomer()
             .withCloseDateToday()
             .withPricingInformation()
