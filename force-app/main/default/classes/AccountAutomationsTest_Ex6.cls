@@ -16,7 +16,7 @@ public class AccountAutomationsTest_Ex6 {
     
         // ARRANGE
         MDF_FactoryOrchestrator factoryOrchestrator = new MDF_FactoryOrchestrator();
-        MDF_FactoryDataSets.QualifyingAccountWithAssets_DataSet dataSet = factoryOrchestrator.QualifyingAccountWithAssets();
+        MDF_FactoryDataSets.QualifyingAccountWithAsset_DataSet dataSet = factoryOrchestrator.QualifyingAccountWithAsset();
     
         // ACT
         test.startTest();
@@ -34,8 +34,7 @@ public class AccountAutomationsTest_Ex6 {
         System.assertEquals(Date.today(), updatedContacts[0].Relations_Last_Accessed__c);
         System.assertEquals(1, updatedOpps.size());
         System.assertEquals(Date.today(), updatedOpps[0].Relations_Last_Accessed__c);
-        System.assertEquals(2, updatedAssets.size());
+        System.assertEquals(1, updatedAssets.size());
         System.assertEquals(Date.today(), updatedAssets[0].Relations_Last_Accessed__c);
-        System.assertEquals(Date.today(), updatedAssets[1].Relations_Last_Accessed__c);
     }
 }

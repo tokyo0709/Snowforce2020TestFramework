@@ -7,9 +7,9 @@ public class MDF_FactoryOrchestrator {
     }
 
     // Orchestrated Test Data Sets
-    public MDF_FactoryDataSets.QualifyingAccountWithAssets_DataSet QualifyingAccountWithAssets() {
+    public MDF_FactoryDataSets.QualifyingAccountWithAsset_DataSet QualifyingAccountWithAsset() {
 
-        MDF_FactoryDataSets.QualifyingAccountWithAssets_DataSet dataSet = DataSets.QualifyingAccountWithAssetsTestData;
+        MDF_FactoryDataSets.QualifyingAccountWithAsset_DataSet dataSet = DataSets.QualifyingAccountWithAssetTestData;
 
         dataSet.TestAccount = MDF_AccountFactory.start()
             .withDescription()
@@ -33,13 +33,7 @@ public class MDF_FactoryOrchestrator {
             .withStageQualification()
             .create();
 
-        // Test Assets
-        dataSet.TestAssetOne = MDF_AssetFactory.start(dataSet.TestAccount)
-            .withQuantity()
-            .asPurchased()
-            .create();
-
-        dataSet.TestAssetTwo = MDF_AssetFactory.start(dataSet.TestAccount)
+        dataSet.TestAsset = MDF_AssetFactory.start(dataSet.TestAccount)
             .withQuantity()
             .asPurchased()
             .create();
