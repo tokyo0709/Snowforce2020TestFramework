@@ -124,18 +124,18 @@ A quick and easy way to help keep some uniformity with your unit testing is to f
 "testm": {
 	"prefix": "testm",
 	"body": [
-		"@IsTest static void ${1:functionName}_${2:TestedFunctionality}() {\n\n\t",
+		"@IsTest static void ${1:functionName}_${2:TestedFunctionality}() {\n",
 		
-			"// ARRANGE\n\t",
-			"$0\n\n\t",
+			"\t// ARRANGE",
+			"\t$0\n",
 			
-			"// ACT\n\t",
-			"test.startTest();\n\n\t",
+			"\t// ACT",
+			"\ttest.startTest();\n",
 			
-			"test.stopTest();\n\n\t",
+			"\ttest.stopTest();\n",
 			
-			"// ASSERT\n\t",
-			"System.assert(false, 'NOT IMPLEMENTED');\n",
+			"\t// ASSERT",
+			"\tSystem.assert(false, 'NOT IMPLEMENTED');",
 		"}"
 	]
 }
