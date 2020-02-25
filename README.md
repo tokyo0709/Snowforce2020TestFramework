@@ -6,6 +6,8 @@ This repo is meant to be a guide in discovering better methods and practices to 
 
 This repository is built with a single feature in mind located in the `AccountAutomations.cls` file for the `syncRelationsLastAccessed` function. This feature simply takes an Account Id and synchronizes a custom field on the Account, any related Contacts, any related Assets, and any related Opportunities with today's date. Several files are then implemented to test this functionality with their own unique style. Each test class evaluates the exact same logic and performs the exact same asserts. Advantages and Disadvantages are listed at the top of each file and you can see for yourself how it may or may not work for your organization.
 
+In order to test the framework in your own org be sure to implement the custom Date field `Relations_Last_Accessed__c` on the Account, Contact, Opportunity, and Asset.
+
 The current test classes and related files with their style of testing are as follows,
 
 ### The Isolated Test
