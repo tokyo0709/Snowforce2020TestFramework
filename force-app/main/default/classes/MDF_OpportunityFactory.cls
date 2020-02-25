@@ -14,6 +14,11 @@ public class MDF_OpportunityFactory {
     }
 
     // Composable Functions
+    public MDF_OpportunityFactory asNewCustomer() {
+        current.Type = 'New Customer';
+        return this;
+    }
+
     public MDF_OpportunityFactory relatedAccount(Account account) {
         current.AccountId = account.Id;
         return this;
@@ -21,11 +26,6 @@ public class MDF_OpportunityFactory {
 
     public MDF_OpportunityFactory withStageQualification() {
         current.StageName = 'Qualification';
-        return this;
-    }
-
-    public MDF_OpportunityFactory asNewCustomer() {
-        current.Type = 'New Customer';
         return this;
     }
 
